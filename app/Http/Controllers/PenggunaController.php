@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PenggunaController extends Controller
 {
@@ -12,15 +15,18 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        return view('pengguna.index');
+
+        $produks = Produk::paginate(3);
+        return view('pengguna.index', compact('produks'));
     }
     public function katalog()
     {
-        return view('pengguna.katalog');
+        $produks = Produk::paginate(2);
+        return view('pengguna.katalog', compact('produks'));
     }
-    public function katalogshow()
+    public function katalogshow(Produk $produk)
     {
-        return view('pengguna.katalog-single');
+        return view('pengguna.katalog-single', compact('produk'));
     }
     public function cart()
     {
@@ -37,60 +43,34 @@ class PenggunaController extends Controller
 
     public function riwayat()
     {
-        return view('pengguna.riwayat');
+
+        $id = Auth::id();
+
+        $orders =    Order::where('user_id', $id)->get();
+
+
+        return view('pengguna.riwayat', compact('orders'));
     }
 
     public function riwayatshow()
     {
+
+        $x =  Order::first('id', 1)->get();
+
+        // dd($x);
+
         return view('pengguna.riwayat-singel');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function tentangkami()
     {
-        //
 
+        return view('pengguna.tentangkami');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function kontak()
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('pengguna.kontak');
     }
 }

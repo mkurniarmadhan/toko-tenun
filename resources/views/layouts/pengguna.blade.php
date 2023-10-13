@@ -46,19 +46,30 @@
                         <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                             <div class="site-top-icons">
                                 <ul>
-                                    <li><a href="{{ route('riwayat') }}"><span
-                                                class="icon icon-person"></span></a>Riwayat</li>
 
-                                    <li class="ml-5">
-                                        <a href="{{ route('cart') }}" class="site-cart">
+                                    <li>
+                                        <a href="{{ route('cart.index') }}" class="site-cart">
                                             <span class="icon icon-shopping_cart"></span>
-                                            <span class="count">2</span>
+                                            <span class="count">{{ \Cart::getTotalQuantity() }}</span>
                                             Keranjang
                                         </a>
                                     </li>
-                                    <li>
-                                        <button class="ml-3 btn bnt-sm btn-danger">keluar</button>
+
+                                    @guest
+                                    <li class="ml-5">
+                                        <a href="{{ route('login') }}"><span class="icon icon-person"></span>Login</a>
                                     </li>
+                                    @else
+                                    <li class="ml-5"><a href="{{ route('riwayat') }}"><span
+                                                class="icon icon-person"></span></a>Akun
+                                        saya</li>
+
+                                    @endguest
+
+
+
+
+
                                     <li class="d-inline-block d-md-none ml-md-0"><a href="#"
                                             class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a>
                                     </li>
@@ -167,7 +178,8 @@
                         <p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
-                            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                            <script data-cfasync="false"
+                                src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                             <script>
                                 document.write(new Date().getFullYear());
                             </script> All rights reserved | This template is made
@@ -191,6 +203,9 @@
     <script src="{{ asset('pengguna/js/aos.js') }}"></script>
 
     <script src="{{ asset('pengguna/js/main.js') }}"></script>
+
+
+    @stack('script')
 
 </body>
 

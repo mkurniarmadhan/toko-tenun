@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Tank Top T-Shirt</strong></div>
+                        class="text-black">{{ $produk->namaproduk }}</strong></div>
             </div>
         </div>
     </div>
@@ -12,44 +12,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ Storage::url('produk/p1.jpeg') }}" alt="Image" class="img-fluid">
+                    <img src="{{ $produk->foto }}" alt="Image" class="img-fluid">
                 </div>
                 <div class="col-md-6">
-                    <h2 class="text-black">Ikat Kepala</h2>
+                    <h2 class="text-black">{{ $produk->namaproduk }}</h2>
                     <p>
-                        Ikat weaving throughout Sumba has social, religious and traditional significance. The different
-                        types of ikat cloths are related to the patterns in the making and coloring techniques.
-                        Traditionally only members of the highest clans and their personal attendants wore this for
-                        special ceremonies only. </p>
-                    <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem
-                        perferendis. Quos
-                        repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis
-                        illum hic
-                        magni iste, velit aperiam quis.</p>
-                    <p><strong class="text-primary h4">Rp 150.00</strong></p>
-                    {{-- <div class="mb-1 d-flex">
-                        <label for="option-sm" class="d-flex mr-3 mb-3">
-                            <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input
-                                    type="radio" id="option-sm" name="shop-sizes"></span> <span
-                                class="d-inline-block text-black">Small</span>
-                        </label>
-                        <label for="option-md" class="d-flex mr-3 mb-3">
-                            <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input
-                                    type="radio" id="option-md" name="shop-sizes"></span> <span
-                                class="d-inline-block text-black">Medium</span>
-                        </label>
-                        <label for="option-lg" class="d-flex mr-3 mb-3">
-                            <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input
-                                    type="radio" id="option-lg" name="shop-sizes"></span> <span
-                                class="d-inline-block text-black">Large</span>
-                        </label>
-                        <label for="option-xl" class="d-flex mr-3 mb-3">
-                            <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input
-                                    type="radio" id="option-xl" name="shop-sizes"></span> <span
-                                class="d-inline-block text-black"> Extra Large</span>
-                        </label>
-                    </div> --}}
-                    <div class="mb-5">
+                        {{ $produk->keterangan }}</p>
+
+                    <p><strong class="text-primary h4">Rp {{ $produk->harga }}</strong></p>
+                    {{-- <div class="mb-5">
                         <div class="input-group mb-3" style="max-width: 120px;">
                             <div class="input-group-prepend">
                                 <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
@@ -61,8 +32,9 @@
                             </div>
                         </div>
 
-                    </div>
-                    <p><a href="{{ route('cart') }}" class="buy-now btn btn-sm btn-primary">Tambah keranjang</a></p>
+                    </div> --}}
+                    <p><a href="{{ route('cart.add',$produk) }}" class="buy-now btn btn-sm btn-primary">Tambah
+                            keranjang</a></p>
 
                 </div>
             </div>
