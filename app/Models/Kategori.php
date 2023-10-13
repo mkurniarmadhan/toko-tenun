@@ -9,4 +9,6 @@ class Kategori extends Model
 {
     use HasFactory;
     protected $table = 'tb_kategori';
+
+    public $timestamps = false;
 }

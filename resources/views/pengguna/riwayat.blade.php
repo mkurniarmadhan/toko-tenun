@@ -25,14 +25,21 @@
                                 <th>Opsi</th>
                             </thead>
                             <tbody>
+                                @forelse ($orders as $order)
+
+                                {{ $order }}
                                 <tr>
 
-                                    <td>#8764375nd</td>
-                                    <td>MInggu , 23 November 2023</td>
-                                    <td>Rp 150.00</td>
+                                    <td>{{ $order->id }}</td>
+                                    <td>{{ \Carbon\carbon::parse($order->created_at)->format('l m-d-Y') }}</td>
+                                    <td>Rp{{ number_format($order->totalbayar) }}</td>
                                     <td><a href="{{ route('riwayatshow') }}" class="btn-sm btn btn-success"> Lihat
                                             detail</a></td>
                                 </tr>
+
+                                @empty
+
+                                @endforelse
 
                             </tbody>
                         </table>

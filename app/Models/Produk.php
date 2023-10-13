@@ -11,16 +11,24 @@ class Produk extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guarded = [];
 
     protected function foto(): Attribute
     {
         return Attribute::make(
             get: function ($x) {
-                if (is_null($x)) {
-                    return 'https://api.dicebear.com/6.x/fun-emoji/svg?seed=amar';
+                if ($x) {
+                    return asset("admin/img/produks/$x");
                 }
-                return    Storage::url('produk/' . $x);
+                return 'https://api.dicebear.com/6.x/fun-emoji/svg?seed=amar';
+            },
+        );
+    }
+    protected function harga(): Attribute
+    {
+        return Attribute::make(
+            get: function ($x) {
+                return   number_format($x);
             },
         );
     }
