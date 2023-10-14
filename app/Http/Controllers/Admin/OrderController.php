@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -14,7 +13,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+
+
+
+        $orders = Order::all();
+        return view('admin.order.index', compact('orders'));
     }
 
     /**
@@ -30,38 +33,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        // dd($request);
-
-        $order =     Order::create([
-            'user_id' => Auth::id(),
-            'totalbayar' => \Cart::getSubTotal()
-        ]);
-
-        DB::table('order_detail')->insert([
-            'order_id' => $order->id,
-            'namalengkap' => $request->namalengkap,
-            'alamatlengkap' => $request->alamatlengkap,
-            'phone' => $request->phone,
-        ]);
-
-        $carts =      \Cart::getContent();
-
-        $carts->each(function ($item) use ($order) {
-
-            DB::table('order_item')->insert([
-                'order_id' => $order->id,
-                'produk_id' => $item->id,
-                'qty' => $item->quantity,
-                'jumlah' => $item->getPriceSum()
-            ]);
-        });
-
-        \Cart::clear();
-
-
-        return to_route('riwayat');
+        //
     }
 
     /**
@@ -69,7 +41,9 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+
+        return view('admin.order.show');
     }
 
     /**

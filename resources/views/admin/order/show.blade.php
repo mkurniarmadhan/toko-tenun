@@ -72,63 +72,26 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Items</th>
-                                                        <th>Product ID</th>
-                                                        <th>Quantity</th>
-                                                        <th>Sub Total</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+
                                                     <tr>
-                                                        <td>
-                                                            Wordpress Template
-                                                            <p class="m-0 text-muted">
-                                                                Reference site about Lorem Ipsum, giving information
-                                                                on its origins.
-                                                            </p>
-                                                        </td>
-                                                        <td>#50000981</td>
-                                                        <td>9</td>
-                                                        <td>$5000.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Maxwell Admin Template
-                                                            <p class="m-0 text-muted">
-                                                                As well as a random Lipsum generator.
-                                                            </p>
-                                                        </td>
-                                                        <td>#50000126</td>
-                                                        <td>5</td>
-                                                        <td>$100.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Unify Admin Template
-                                                            <p class="m-0 text-muted">
-                                                                Lorem ipsum has become the industry standard.
-                                                            </p>
-                                                        </td>
-                                                        <td>#50000821</td>
+                                                        <td>Produk 1</td>
                                                         <td>6</td>
-                                                        <td>$49.99</td>
+                                                        <td>100</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>&nbsp;</td>
+
                                                         <td colspan="2">
-                                                            <p>
-                                                                Subtotal<br>
-                                                                Shipping &amp; Handling<br>
-                                                                Tax<br>
-                                                            </p>
-                                                            <h5 class="text-success"><strong>Grand Total</strong>
+
+                                                            <h5 class="text-success"><strong>Total Bayar</strong>
                                                             </h5>
                                                         </td>
                                                         <td>
-                                                            <p>
-                                                                $5000.00<br>
-                                                                $100.00<br>
-                                                                $49.00<br>
-                                                            </p>
+
                                                             <h5 class="text-success"><strong>$5150.99</strong></h5>
                                                         </td>
                                                     </tr>

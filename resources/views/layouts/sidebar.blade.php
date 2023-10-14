@@ -37,8 +37,8 @@
         </a>
         <div id="collapsePagesProduk" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Lihat Data Porudk</a>
-                <a class="collapse-item" href="#">Tambah data Produk</a>
+                <a class="collapse-item" href="{{ route('produk.index') }}">Lihat Data Porudk</a>
+                <a class="collapse-item" href="{{ route('produk.create') }}">Tambah data Produk</a>
 
             </div>
         </div>
@@ -52,7 +52,7 @@
         </a>
         <div id="collapsePagesOrder" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Lihat Data Order</a>
+                <a class="collapse-item" href="{{ route('order.index') }}">Lihat Data Order</a>
             </div>
         </div>
     </li>

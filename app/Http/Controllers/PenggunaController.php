@@ -45,10 +45,7 @@ class PenggunaController extends Controller
     {
 
         $id = Auth::id();
-
         $orders =    Order::where('user_id', $id)->get();
-
-
         return view('pengguna.riwayat', compact('orders'));
     }
 
