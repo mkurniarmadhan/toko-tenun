@@ -15,17 +15,12 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->double('totalbayar');
-            $table->boolean('statusbayar')->default(false);
-            $table->timestamps();
-        });
-
-        Schema::create('order_detail', function (Blueprint $table) {
-            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
-            $table->string('namalengkap');
-            $table->text('alamatlengkap');
+            $table->string('namapemesan');
+            $table->text('alamat');
             $table->string('phone');
+            $table->double('totalbayar');
             $table->text('buktibayar')->nullable();
+            $table->boolean('statusbayar')->default(false);
             $table->timestamps();
         });
 

@@ -25,7 +25,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -39,11 +38,11 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Order $order)
     {
 
 
-        return view('admin.order.show');
+        return view('admin.order.show', compact('order'));
     }
 
     /**
@@ -57,9 +56,13 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Order $order)
     {
-        //
+
+
+
+        $order->update(['statusbayar' => true]);
+        return back();
     }
 
     /**

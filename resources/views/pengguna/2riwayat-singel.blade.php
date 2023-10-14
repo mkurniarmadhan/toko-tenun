@@ -10,299 +10,239 @@
         </div>
     </div>
 
+    <div class="site-section">
+        <div class="container">
 
-    <div class="container">
-        <div class="row gutters">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <div class="invoice-container">
-                            <div class="invoice-header">
-                                <!-- Row start -->
-                                <div class="row gutters">
-                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="custom-actions-btns mb-5">
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="icon-download"></i> Download
-                                            </a>
-                                            <a href="#" class="btn btn-secondary">
-                                                <i class="icon-printer"></i> Print
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Row end -->
-                                <!-- Row start -->
-                                <div class="row gutters">
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                        <a href="index.html" class="invoice-logo">
-                                            Bootdey.com
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <address class="text-right">
-                                            Maxwell admin Inc, 45 NorthWest Street.<br>
-                                            Sunrise Blvd, San Francisco.<br>
-                                            00000 00000
-                                        </address>
-                                    </div>
-                                </div>
-                                <!-- Row end -->
-                                <!-- Row start -->
-                                <div class="row gutters">
-                                    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                                        <div class="invoice-details">
-                                            <address>
-                                                Alex Maxwell<br>
-                                                150-600 Church Street, Florida, USA
-                                            </address>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                                        <div class="invoice-details">
-                                            <div class="invoice-num">
-                                                <div>Invoice - #009</div>
-                                                <div>January 10th 2020</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Row end -->
+            <div class="row">
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <h2 class="h3 mb-3 text-black">Detail Pemesan </h2>
+                    <div class="p-3 p-lg-5 border">
+                        {{-- <div class="form-group">
+                            <label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
+                            <select id="c_country" class="form-control">
+                                <option value="1">Select a country</option>
+                                <option value="2">bangladesh</option>
+                                <option value="3">Algeria</option>
+                                <option value="4">Afghanistan</option>
+                                <option value="5">Ghana</option>
+                                <option value="6">Albania</option>
+                                <option value="7">Bahrain</option>
+                                <option value="8">Colombia</option>
+                                <option value="9">Dominican Republic</option>
+                            </select>
+                        </div> --}}
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_fname" class="text-black">Nama Lengkap<span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_fname" name="c_fname">
                             </div>
-                            <div class="invoice-body">
-                                <!-- Row start -->
-                                <div class="row gutters">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="table-responsive">
-                                            <table class="table custom-table m-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Items</th>
-                                                        <th>Product ID</th>
-                                                        <th>Quantity</th>
-                                                        <th>Sub Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            Wordpress Template
-                                                            <p class="m-0 text-muted">
-                                                                Reference site about Lorem Ipsum, giving information
-                                                                on its origins.
-                                                            </p>
-                                                        </td>
-                                                        <td>#50000981</td>
-                                                        <td>9</td>
-                                                        <td>$5000.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Maxwell Admin Template
-                                                            <p class="m-0 text-muted">
-                                                                As well as a random Lipsum generator.
-                                                            </p>
-                                                        </td>
-                                                        <td>#50000126</td>
-                                                        <td>5</td>
-                                                        <td>$100.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Unify Admin Template
-                                                            <p class="m-0 text-muted">
-                                                                Lorem ipsum has become the industry standard.
-                                                            </p>
-                                                        </td>
-                                                        <td>#50000821</td>
-                                                        <td>6</td>
-                                                        <td>$49.99</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>&nbsp;</td>
-                                                        <td colspan="2">
-                                                            <p>
-                                                                Subtotal<br>
-                                                                Shipping &amp; Handling<br>
-                                                                Tax<br>
-                                                            </p>
-                                                            <h5 class="text-success"><strong>Grand Total</strong>
-                                                            </h5>
-                                                        </td>
-                                                        <td>
-                                                            <p>
-                                                                $5000.00<br>
-                                                                $100.00<br>
-                                                                $49.00<br>
-                                                            </p>
-                                                            <h5 class="text-success"><strong>$5150.99</strong></h5>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label for="c_address" class="text-black">ALamat <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_address" name="c_address"
+                                    placeholder="Jalan Rt rw">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Patokan lokasi (optional)">
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="c_state_country" class="text-black">State / Country <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_state_country" name="c_state_country">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_postal_zip" class="text-black">Posta / Zip <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-5">
+                            <div class="col-md-6">
+                                <label for="c_email_address" class="text-black">Email Address <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="c_phone" name="c_phone"
+                                    placeholder="Phone Number">
+                            </div>
+                        </div>
+
+
+
+                        {{-- <div class="form-group">
+                            <label for="c_ship_different_address" class="text-black" data-toggle="collapse"
+                                href="#ship_different_address" role="button" aria-expanded="false"
+                                aria-controls="ship_different_address"><input type="checkbox" value="1"
+                                    id="c_ship_different_address"> Ship To A Different Address?</label>
+                            <div class="collapse" id="ship_different_address">
+                                <div class="py-2">
+
+                                    <div class="form-group">
+                                        <label for="c_diff_country" class="text-black">Country <span
+                                                class="text-danger">*</span></label>
+                                        <select id="c_diff_country" class="form-control">
+                                            <option value="1">Select a country</option>
+                                            <option value="2">bangladesh</option>
+                                            <option value="3">Algeria</option>
+                                            <option value="4">Afghanistan</option>
+                                            <option value="5">Ghana</option>
+                                            <option value="6">Albania</option>
+                                            <option value="7">Bahrain</option>
+                                            <option value="8">Colombia</option>
+                                            <option value="9">Dominican Republic</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="c_diff_fname" class="text-black">First Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_fname"
+                                                name="c_diff_fname">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="c_diff_lname" class="text-black">Last Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_lname"
+                                                name="c_diff_lname">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label for="c_diff_companyname" class="text-black">Company Name </label>
+                                            <input type="text" class="form-control" id="c_diff_companyname"
+                                                name="c_diff_companyname">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label for="c_diff_address" class="text-black">Address <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_address"
+                                                name="c_diff_address" placeholder="Street address">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                            placeholder="Apartment, suite, unit etc. (optional)">
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="c_diff_state_country" class="text-black">State / Country <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_state_country"
+                                                name="c_diff_state_country">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="c_diff_postal_zip" class="text-black">Posta / Zip <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_postal_zip"
+                                                name="c_diff_postal_zip">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-5">
+                                        <div class="col-md-6">
+                                            <label for="c_diff_email_address" class="text-black">Email Address <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_email_address"
+                                                name="c_diff_email_address">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="c_diff_phone" class="text-black">Phone <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="c_diff_phone"
+                                                name="c_diff_phone" placeholder="Phone Number">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div> --}}
+
+                        <div class="form-group">
+                            <label for="c_order_notes" class="text-black">Catan pemesanan</label>
+                            <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control"
+                                placeholder="Tambhakna catatan..."></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="row mb-5">
+                        <div class="col-md-12">
+                            <h2 class="h3 mb-3 text-black">Pesanan Kamu </h2>
+                            <div class="p-3 p-lg-5 border">
+                                <table class="table site-block-order-table mb-5">
+                                    <thead>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
+                                            <td>Rp 150.00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-black font-weight-bold"><strong>pesanan Total</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>rp 150.00</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="border p-3 mb-3">
+                                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse " href="#collapsebank"
+                                            role="button" aria-expanded="false" aria-controls="collapsebank">Metode
+                                            bayar</a></h3>
+
+                                    <div class="collapse show" id="collapsebank">
+                                        <div class="py-2">
+                                            <p class="mb-0"> Rekening BCA </p>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Row end -->
-                            </div>
-                            <div class="invoice-footer">
-                                Thank you for your Business.
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="text-black h4" for="coupon">BUKTI BAYAR </label>
+                                        <p>Silahkan upload bukti bayar</p>
+                                    </div>
+                                    <div class="col-md-8 mb-3 ">
+                                        <input type="file" class="form-control" id="coupon" placeholder="Coupon Code">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary btn-sm">Upload Coupon</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+            <!-- </form> -->
         </div>
     </div>
-
-    @push('script')
-
-    <style>
-        .invoice-container {
-            padding: 1rem;
-        }
-
-        .invoice-container .invoice-header .invoice-logo {
-            margin: 0.8rem 0 0 0;
-            display: inline-block;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #2e323c;
-        }
-
-        .invoice-container .invoice-header .invoice-logo img {
-            max-width: 130px;
-        }
-
-        .invoice-container .invoice-header address {
-            font-size: 0.8rem;
-            color: #9fa8b9;
-            margin: 0;
-        }
-
-        .invoice-container .invoice-details {
-            margin: 1rem 0 0 0;
-            padding: 1rem;
-            line-height: 180%;
-            background: #f5f6fa;
-        }
-
-        .invoice-container .invoice-details .invoice-num {
-            text-align: right;
-            font-size: 0.8rem;
-        }
-
-        .invoice-container .invoice-body {
-            padding: 1rem 0 0 0;
-        }
-
-        .invoice-container .invoice-footer {
-            text-align: center;
-            font-size: 0.7rem;
-            margin: 5px 0 0 0;
-        }
-
-        .invoice-status {
-            text-align: center;
-            padding: 1rem;
-            background: #ffffff;
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
-
-        .invoice-status h2.status {
-            margin: 0 0 0.8rem 0;
-        }
-
-        .invoice-status h5.status-title {
-            margin: 0 0 0.8rem 0;
-            color: #9fa8b9;
-        }
-
-        .invoice-status p.status-type {
-            margin: 0.5rem 0 0 0;
-            padding: 0;
-            line-height: 150%;
-        }
-
-        .invoice-status i {
-            font-size: 1.5rem;
-            margin: 0 0 1rem 0;
-            display: inline-block;
-            padding: 1rem;
-            background: #f5f6fa;
-            -webkit-border-radius: 50px;
-            -moz-border-radius: 50px;
-            border-radius: 50px;
-        }
-
-        .invoice-status .badge {
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 767px) {
-            .invoice-container {
-                padding: 1rem;
-            }
-        }
-
-
-        .custom-table {
-            border: 1px solid #e0e3ec;
-        }
-
-        .custom-table thead {
-            background: #007ae1;
-        }
-
-        .custom-table thead th {
-            border: 0;
-            color: #ffffff;
-        }
-
-        .custom-table>tbody tr:hover {
-            background: #fafafa;
-        }
-
-        .custom-table>tbody tr:nth-of-type(even) {
-            background-color: #ffffff;
-        }
-
-        .custom-table>tbody td {
-            border: 1px solid #e6e9f0;
-        }
-
-
-        .card {
-            background: #ffffff;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            border: 0;
-            margin-bottom: 1rem;
-        }
-
-        .text-success {
-            color: #00bb42 !important;
-        }
-
-        .text-muted {
-            color: #9fa8b9 !important;
-        }
-
-        .custom-actions-btns {
-            margin: auto;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .custom-actions-btns .btn {
-            margin: .3rem 0 .3rem .3rem;
-        }
-    </style>
-
-    @endpush
 
     </x-layuot>

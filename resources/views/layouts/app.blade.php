@@ -86,17 +86,11 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
 
-                                <form action="{{ route('logout') }}" method="post">
 
-                                    @csrf
-                                    <button class="dropdown-item" type="submit" data-toggle="modal"
-                                        data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Keluar
-                                    </button>
-                                </form>
-
-
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Keluar
+                                </a>
                             </div>
                         </li>
 
@@ -146,8 +140,16 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
+                    <form action="{{ route('logout') }}" method="post">
+
+                        @csrf
+                        <button class="btn btn-danger" type="submit" data-toggle="modal" data-target="#logoutModal">
+
+                            Keluar
+                        </button>
+                    </form>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+
                 </div>
             </div>
         </div>

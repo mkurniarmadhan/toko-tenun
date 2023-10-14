@@ -3,246 +3,308 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a
-                        href="cart.html">keranjang</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">transaksi pemesanan</strong></div>
+                <div class="col-md-12 mb-0"><a href="{{ route('dashboard') }}">Home</a> <span class="mx-2 mb-0">/</span>
+                    <a href="cart.html">riwayat</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">riwayat
+                        pemesanan detail</strong></div>
             </div>
         </div>
     </div>
-
     <div class="site-section">
         <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="invoice-container">
+                                <div class="invoice-header mb-3">
+                                    <!-- Row start -->
+                                    <form action="{{ route('updateBukti',$order) }}" class="d-block" method="post"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="d-flex">
 
-            <div class="row">
-                <div class="col-md-6 mb-5 mb-md-0">
-                    <h2 class="h3 mb-3 text-black">Detail Pemesan </h2>
-                    <div class="p-3 p-lg-5 border">
-                        {{-- <div class="form-group">
-                            <label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
-                            <select id="c_country" class="form-control">
-                                <option value="1">Select a country</option>
-                                <option value="2">bangladesh</option>
-                                <option value="3">Algeria</option>
-                                <option value="4">Afghanistan</option>
-                                <option value="5">Ghana</option>
-                                <option value="6">Albania</option>
-                                <option value="7">Bahrain</option>
-                                <option value="8">Colombia</option>
-                                <option value="9">Dominican Republic</option>
-                            </select>
-                        </div> --}}
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label for="c_fname" class="text-black">Nama Lengkap<span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_fname" name="c_fname">
-                            </div>
+                                            <button type="submit" class="btn btn-success">
+                                                Konfirmasi Bayar
+                                            </button>
+                                            <div class="custom-file ml-3">
+                                                <input type="file" class="custom-file-input" id="customFile"
+                                                    name="buktibayar">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                                <div id="info">
+                                                    <!-- Button trigger modal -->
 
-                        </div>
+                                                    @if ($order->buktibayar)
+                                                    <a data-toggle="modal" data-target="#modalBukti">
+                                                        <span class="badge badge-primary">Lihat bukti</span>
+                                                    </a>
+                                                    @endif
 
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="modalBukti" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog  modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Bukti
+                                                                        bayar
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <img class="img-fluid" width="200px"
+                                                                        src="    {{ $order->buktibayar }}" alt="">
+                                                                </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label for="c_address" class="text-black">ALamat <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_address" name="c_address"
-                                    placeholder="Jalan Rt rw">
-                            </div>
-                        </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Patokan lokasi (optional)">
-                        </div>
+                                                </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <label for="c_state_country" class="text-black">State / Country <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_state_country" name="c_state_country">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="c_postal_zip" class="text-black">Posta / Zip <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-5">
-                            <div class="col-md-6">
-                                <label for="c_email_address" class="text-black">Email Address <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_email_address" name="c_email_address">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_phone" name="c_phone"
-                                    placeholder="Phone Number">
-                            </div>
-                        </div>
-
-
-
-                        {{-- <div class="form-group">
-                            <label for="c_ship_different_address" class="text-black" data-toggle="collapse"
-                                href="#ship_different_address" role="button" aria-expanded="false"
-                                aria-controls="ship_different_address"><input type="checkbox" value="1"
-                                    id="c_ship_different_address"> Ship To A Different Address?</label>
-                            <div class="collapse" id="ship_different_address">
-                                <div class="py-2">
-
-                                    <div class="form-group">
-                                        <label for="c_diff_country" class="text-black">Country <span
-                                                class="text-danger">*</span></label>
-                                        <select id="c_diff_country" class="form-control">
-                                            <option value="1">Select a country</option>
-                                            <option value="2">bangladesh</option>
-                                            <option value="3">Algeria</option>
-                                            <option value="4">Afghanistan</option>
-                                            <option value="5">Ghana</option>
-                                            <option value="6">Albania</option>
-                                            <option value="7">Bahrain</option>
-                                            <option value="8">Colombia</option>
-                                            <option value="9">Dominican Republic</option>
-                                        </select>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <label for="c_diff_fname" class="text-black">First Name <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="c_diff_fname"
-                                                name="c_diff_fname">
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="c_diff_lname" class="text-black">Last Name <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="c_diff_lname"
-                                                name="c_diff_lname">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <div class="col-md-12">
-                                            <label for="c_diff_companyname" class="text-black">Company Name </label>
-                                            <input type="text" class="form-control" id="c_diff_companyname"
-                                                name="c_diff_companyname">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <div class="col-md-12">
-                                            <label for="c_diff_address" class="text-black">Address <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="c_diff_address"
-                                                name="c_diff_address" placeholder="Street address">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="text" class="form-control"
-                                            placeholder="Apartment, suite, unit etc. (optional)">
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <label for="c_diff_state_country" class="text-black">State / Country <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="c_diff_state_country"
-                                                name="c_diff_state_country">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="c_diff_postal_zip" class="text-black">Posta / Zip <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="c_diff_postal_zip"
-                                                name="c_diff_postal_zip">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row mb-5">
-                                        <div class="col-md-6">
-                                            <label for="c_diff_email_address" class="text-black">Email Address <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="c_diff_email_address"
-                                                name="c_diff_email_address">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="c_diff_phone" class="text-black">Phone <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="c_diff_phone"
-                                                name="c_diff_phone" placeholder="Phone Number">
-                                        </div>
-                                    </div>
-
+                                    </form>
                                 </div>
 
-                            </div>
-                        </div> --}}
 
-                        <div class="form-group">
-                            <label for="c_order_notes" class="text-black">Catan pemesanan</label>
-                            <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control"
-                                placeholder="Tambhakna catatan..."></textarea>
-                        </div>
 
-                    </div>
-                </div>
-                <div class="col-md-6">
+                                <!-- Row end -->
 
-                    <div class="row mb-5">
-                        <div class="col-md-12">
-                            <h2 class="h3 mb-3 text-black">Pesanan Kamu </h2>
-                            <div class="p-3 p-lg-5 border">
-                                <table class="table site-block-order-table mb-5">
-                                    <thead>
-                                        <th>Product</th>
-                                        <th>Total</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-                                            <td>Rp 150.00</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="text-black font-weight-bold"><strong>pesanan Total</strong></td>
-                                            <td class="text-black font-weight-bold"><strong>rp 150.00</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <div class="border p-3 mb-3">
-                                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse " href="#collapsebank"
-                                            role="button" aria-expanded="false" aria-controls="collapsebank">Metode
-                                            bayar</a></h3>
-
-                                    <div class="collapse show" id="collapsebank">
-                                        <div class="py-2">
-                                            <p class="mb-0"> Rekening BCA </p>
+                                <!-- Row start -->
+                                <div class="row gutters">
+                                    <div class="col-12">
+                                        <div class="invoice-details">
+                                            <h4>
+                                                Rekening Pelunasan<br>
+                                                (bca) 3710375576 A.n / Amar
+                                            </h4>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="invoice-details">
+                                            <div class="d-flex justify-content-between align-self-center">
+                                                <h3 class="ms-auto">Status - {{ $order->statusbayar !=0 ? 'LUNAS'
+                                                    :'Belum Lunas' }}</h3>
+                                                <div class="invoice-num align-self-end">
+                                                    <div>Invoice - #{{ $order->id }}</div>
+                                                    <div>{{ $order->created_at }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Row end -->
                                 </div>
+                                <div class="invoice-body">
+                                    <!-- Row start -->
+                                    <div class="row gutters">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="table-responsive">
+                                                <table class="table custom-table m-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Items</th>
+                                                            <th>Jumlah</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label class="text-black h4" for="coupon">BUKTI BAYAR </label>
-                                        <p>Silahkan upload bukti bayar</p>
+                                                        @foreach ($order->items as $item)
+
+                                                        <tr>
+                                                            <td>{{ $item->produk->namaproduk }}</td>
+                                                            <td>{{ $item->qty }}</td>
+                                                            <td>{{ number_format($item->jumlah) }}</td>
+                                                        </tr>
+
+                                                        @endforeach
+
+                                                        <tr>
+
+                                                            <td colspan="2">
+
+                                                                <h5 class="text-success"><strong>Total
+                                                                        Bayar</strong>
+                                                                </h5>
+                                                            </td>
+                                                            <td>
+
+                                                                <h5 class="text-success"><strong>{{
+                                                                        number_format($order->totalbayar)
+                                                                        }}</strong>
+                                                                </h5>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-8 mb-3 ">
-                                        <input type="file" class="form-control" id="coupon" placeholder="Coupon Code">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button class="btn btn-primary btn-sm">Upload Coupon</button>
-                                    </div>
+                                    <!-- Row end -->
+                                </div>
+                                <div class="invoice-footer">
+                                    Thank you for your Business.
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-            <!-- </form> -->
         </div>
     </div>
+
+
+    @push('script')
+
+    <style>
+        .invoice-container {
+            padding: 1rem;
+        }
+
+        .invoice-container .invoice-header .invoice-logo {
+            margin: 0.8rem 0 0 0;
+            display: inline-block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2e323c;
+        }
+
+        .invoice-container .invoice-header .invoice-logo img {
+            max-width: 130px;
+        }
+
+        .invoice-container .invoice-header address {
+            font-size: 0.8rem;
+            color: #9fa8b9;
+            margin: 0;
+        }
+
+        .invoice-container .invoice-details {
+            margin: 1rem 0 0 0;
+            padding: 1rem;
+            line-height: 180%;
+            background: #f5f6fa;
+        }
+
+        .invoice-container .invoice-details .invoice-num {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .invoice-container .invoice-body {
+            padding: 1rem 0 0 0;
+        }
+
+        .invoice-container .invoice-footer {
+            text-align: center;
+            font-size: 0.7rem;
+            margin: 5px 0 0 0;
+        }
+
+        .invoice-status {
+            text-align: center;
+            padding: 1rem;
+            background: #ffffff;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .invoice-status h2.status {
+            margin: 0 0 0.8rem 0;
+        }
+
+        .invoice-status h5.status-title {
+            margin: 0 0 0.8rem 0;
+            color: #9fa8b9;
+        }
+
+        .invoice-status p.status-type {
+            margin: 0.5rem 0 0 0;
+            padding: 0;
+            line-height: 150%;
+        }
+
+        .invoice-status i {
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            display: inline-block;
+            padding: 1rem;
+            background: #f5f6fa;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+        }
+
+        .invoice-status .badge {
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 767px) {
+            .invoice-container {
+                padding: 1rem;
+            }
+        }
+
+
+        .custom-table {
+            border: 1px solid #e0e3ec;
+        }
+
+        .custom-table thead {
+            background: #007ae1;
+        }
+
+        .custom-table thead th {
+            border: 0;
+            color: #ffffff;
+        }
+
+        .custom-table>tbody tr:hover {
+            background: #fafafa;
+        }
+
+        .custom-table>tbody tr:nth-of-type(even) {
+            background-color: #ffffff;
+        }
+
+        .custom-table>tbody td {
+            border: 1px solid #e6e9f0;
+        }
+
+
+        .card {
+            background: #ffffff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 0;
+            margin-bottom: 1rem;
+        }
+
+        .text-success {
+            color: #00bb42 !important;
+        }
+
+        .text-muted {
+            color: #9fa8b9 !important;
+        }
+
+        .custom-actions-btns {
+            margin: auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .custom-actions-btns .btn {
+            margin: .3rem 0 .3rem .3rem;
+        }
+    </style>
+
+    @endpush
 
     </x-layuot>

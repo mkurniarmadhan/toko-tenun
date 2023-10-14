@@ -54,19 +54,12 @@
                                             Keranjang
                                         </a>
                                     </li>
+                                    @auth
 
-                                    @guest
-                                    <li class="ml-5">
-                                        <a href="{{ route('login') }}"><span class="icon icon-person"></span>Login</a>
                                     </li>
-                                    @else
-                                    <li class="ml-5"><a href="{{ route('riwayat') }}"><span
-                                                class="icon icon-person"></span></a>Akun
-                                        saya</li>
-
-                                    @endguest
 
 
+                                    @endauth
 
 
 
@@ -84,6 +77,14 @@
                 <div class="container">
                     <ul class="site-menu js-clone-nav d-none d-md-block">
 
+                        @auth
+
+                        <li class="{{ Route::is('riwayat') ? 'active' : '' }}">
+                            <a href="{{ route('riwayat') }}"><span class="icon icon-person"></span>Akun
+                                saya</a>
+                        </li>
+
+                        @endauth
                         <li class="{{ Route::is('dashboard') ? 'active' : '' }}">
                             <a href="{{ route('dashboard') }}">Home</a>
 
@@ -100,6 +101,28 @@
                             <a href="{{ route('kontak') }}">kontak</a>
                         </li>
 
+
+                        @guest
+                        <form action="{{ route('login') }}" method="get" class="d-inline-block">
+                            @csrf
+                            <button class="btn btn-success" type="submit" data-toggle="modal"
+                                data-target="#logoutModal">
+
+                                Login
+                            </button>
+                            @else
+                            <form action="{{ route('logout') }}" method="post" class="d-inline-block">
+
+                                @csrf
+                                <button class="btn btn-danger" type="submit" data-toggle="modal"
+                                    data-target="#logoutModal">
+
+                                    Keluar
+                                </button>
+                            </form>
+
+
+                            @endguest
 
 
 

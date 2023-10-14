@@ -29,10 +29,11 @@ Route::get('katalog', [PenggunaController::class, 'katalog'])->name('katalog');
 Route::get('katalog/{produk}', [PenggunaController::class, 'katalogshow'])->name('katalog.show');
 Route::get('tentangkami', [PenggunaController::class, 'tentangkami'])->name('tentangkami');
 Route::get('kontak', [PenggunaController::class, 'kontak'])->name('kontak');
-Route::get('checkout', [PenggunaController::class, 'checkout'])->name('checkout');
-Route::get('success', [PenggunaController::class, 'success'])->name('success');
-Route::get('riwayat', [PenggunaController::class, 'riwayat'])->name('riwayat');
-Route::get('riwayat/2', [PenggunaController::class, 'riwayatshow'])->name('riwayatshow');
+Route::get('checkout', [PenggunaController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::post('checkout', [PenggunaController::class, 'checkoutStore'])->name('checkout.store')->middleware('auth');
+Route::get('riwayat', [PenggunaController::class, 'riwayat'])->name('riwayat')->middleware('auth');
+Route::get('riwayat/{order}', [PenggunaController::class, 'riwayatshow'])->name('riwayatshow')->middleware('auth');
+Route::post('updateBukti/{order}', [PenggunaController::class, 'updateBukti'])->name('updateBukti')->middleware('auth');
 
 
 // cart

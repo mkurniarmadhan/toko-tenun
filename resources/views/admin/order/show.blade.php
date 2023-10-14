@@ -2,10 +2,11 @@
 
     <div class="container-fluid">
 
-
-        <a href="#" class="btn btn-primary mb-3">
+        <a href="{{ route('order.index') }}" class="btn btn-primary mb-3">
             <i class="icon-download"></i> Kembali
         </a>
+
+        {{ $order }}
         <div class="row gutters">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
@@ -16,47 +17,53 @@
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <div class="custom-actions-btns mb-5">
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="icon-download"></i> Download
+
+                                            <a href="#" class="btn btn-success" data-toggle="modal"
+                                                data-target="#konfirmasiModal">
+                                                <i class="icon-printer"></i> Konfirmasi
                                             </a>
-                                            <a href="#" class="btn btn-secondary">
-                                                <i class="icon-printer"></i> Print
+
+
+                                            <a href="#" class="btn btn-secondary" data-toggle="modal"
+                                                data-target="#modalBuktiBayar">
+                                                <i class="icon-printer"></i> Bukti Bayar
                                             </a>
+                                            <div class="modal fade" id="modalBuktiBayar" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Bukti
+                                                                Bayar
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img width="300" class="img-fluid"
+                                                                src="{{ $order->buktibayar}}" alt="">
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Row end -->
+
                                 <!-- Row start -->
                                 <div class="row gutters">
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                        <a href="index.html" class="invoice-logo">
-                                            Bootdey.com
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <address class="text-right">
-                                            Maxwell admin Inc, 45 NorthWest Street.<br>
-                                            Sunrise Blvd, San Francisco.<br>
-                                            00000 00000
-                                        </address>
-                                    </div>
-                                </div>
-                                <!-- Row end -->
-                                <!-- Row start -->
-                                <div class="row gutters">
-                                    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                                        <div class="invoice-details">
-                                            <address>
-                                                Alex Maxwell<br>
-                                                150-600 Church Street, Florida, USA
-                                            </address>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+
+                                    <div class="col-12">
                                         <div class="invoice-details">
                                             <div class="invoice-num">
-                                                <div>Invoice - #009</div>
-                                                <div>January 10th 2020</div>
+                                                <div>Invoice - #{{ $order->id }}</div>
+                                                <div>{{ $order->created_at }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -78,21 +85,30 @@
                                                 </thead>
                                                 <tbody>
 
+                                                    @foreach ($order->items as $item)
+
                                                     <tr>
-                                                        <td>Produk 1</td>
-                                                        <td>6</td>
-                                                        <td>100</td>
+                                                        <td>{{ $item->produk->namaproduk }}</td>
+                                                        <td>{{ $item->qty }}</td>
+                                                        <td>{{ number_format($item->jumlah) }}</td>
                                                     </tr>
+
+                                                    @endforeach
+
                                                     <tr>
 
                                                         <td colspan="2">
 
-                                                            <h5 class="text-success"><strong>Total Bayar</strong>
+                                                            <h5 class="text-success"><strong>Total
+                                                                    Bayar</strong>
                                                             </h5>
                                                         </td>
                                                         <td>
 
-                                                            <h5 class="text-success"><strong>$5150.99</strong></h5>
+                                                            <h5 class="text-success"><strong>{{
+                                                                    number_format($order->totalbayar)
+                                                                    }}</strong>
+                                                            </h5>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -111,6 +127,34 @@
             </div>
         </div>
 
+        <!-- Logout Modal-->
+        <div class="modal fade" id="konfirmasiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">konfirmasi pesanan</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <form action="{{ route('order.update',$order) }}" method="post">
+
+                            @csrf
+
+                            @method('put')
+                            <button class="btn btn-danger" type="submit">
+                                Konfirmasi
+                            </button>
+                        </form>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 

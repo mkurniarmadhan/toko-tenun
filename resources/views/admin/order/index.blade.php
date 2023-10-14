@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Riwayat Order</h1>
+        <h1 class="h3 mb-2 text-gray-800">Data Order</h1>
 
 
         <!-- DataTales Example -->
@@ -36,21 +36,20 @@
 
 
                             @forelse ($orders as $order)
-                            {{ $order }}
                             <tr>
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>New York</td>
+                                <td>{{ \Carbon\carbon::parse($order->created_at)->format('l m-d-Y') }}</td>
+                                <td>{{ $order->namapemesan }}</td>
+                                <td>{{ number_format($order->totalbayar) }}</td>
+                                <td>{{ $order->statusbayar ? 'Sudah Bayar' :'Belum Bayar' }}</td>
                                 <td>
-                                    <a class="btn btn-success" href="#" data-toggle="modal" data-target="#hapusModal">
+                                    <a class="btn btn-success" href="{{ route('order.show',$order) }}">
                                         Lihat
                                     </a>
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td> Masih Kosong</td>
+                                <td colspan="5"> Masih Kosong</td>
                             </tr>
                             @endforelse
 

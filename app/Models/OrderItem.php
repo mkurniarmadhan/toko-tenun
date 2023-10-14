@@ -11,4 +11,11 @@ class OrderItem extends Model
 
 
     public $table = 'order_item';
+
+
+    public function produk()
+    {
+
+        return $this->belongsTo(Produk::class);
+    }
 }
