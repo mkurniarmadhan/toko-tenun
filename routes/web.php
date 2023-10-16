@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PenggunaController;
+use App\Models\Order;
+use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,7 +20,20 @@ Route::get('/', fn () => to_route('dashboard'));
 // admin
 
 Route::prefix('admin', 'admin')->group(function () {
-    Route::get('dashboard', fn () => view('admin.dashboard'))->name('admin.dashboard');
+    Route::get('dashboard', function () {
+
+
+        $orders = Order::where('statusbayar', false)->limit(5)->get();
+
+        $produk = Produk::count();
+        $lunas = Order::where('statusbayar', true)->count();
+        $belumlunas = Order::where('statusbayar', false)->count();
+
+
+
+
+        return view('admin.dashboard', compact('orders', 'produk', 'lunas', 'belumlunas'));
+    })->name('admin.dashboard');
     Route::resource('produk', ProdukController::class);
     Route::resource('order', OrderController::class);
 });

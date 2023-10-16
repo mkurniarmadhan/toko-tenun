@@ -1,10 +1,11 @@
 <x-pengguna-layout>
-    <div class="site-blocks-cover" style="background-image: url({{ asset('admin/img/produks/1697176858.jpg') }});"
+    <div class="site-blocks-cover"
+        style="background-image: url(https://www.dbs.com/spark/index/id_id/site/img/pillars/55/55.jpg);"
         data-aos="fade">
         <div class="container">
             <div class="row align-items-start align-items-md-center justify-content-end">
-                <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-                    <h1 class="mb-2  text-white">KOLEHKSI PRODUK TENUN</h1>
+                <div class="col-md-5 text-center text-md-left pt-5 pt-md-0" style=" background: black">
+                    <h1 class="mb-2  text-white">Koleksi Produk Tenun</h1>
                     <div class="intro-text text-center text-md-left">
                         <p class="mb-4 text-white">TEMUKAN PRODUK KESUKANAAN KAMU</p>
 

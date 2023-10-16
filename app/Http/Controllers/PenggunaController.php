@@ -22,7 +22,7 @@ class PenggunaController extends Controller
     }
     public function katalog()
     {
-        $produks = Produk::paginate(2);
+        $produks = Produk::paginate(6);
         return view('pengguna.katalog', compact('produks'));
     }
     public function katalogshow(Produk $produk)

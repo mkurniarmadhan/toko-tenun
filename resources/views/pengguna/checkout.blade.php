@@ -62,15 +62,22 @@
                                         <th>Total</th>
                                     </thead>
                                     <tbody>
+
+                                        @foreach (\Cart::getContent() as $item)
+                                        {{ $item}}
                                         <tr>
-                                            <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-                                            <td>Rp 150.00</td>
+                                            <td>{{ $item->name }}<strong class="mx-2">x</strong> {{ $item->quantity }}
+                                            </td>
+                                            <td>Rp {{ number_format($item->getPriceSum()) }}</td>
                                         </tr>
+                                        @endforeach
+
 
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>pesanan Total</strong>
                                             </td>
-                                            <td class="text-black font-weight-bold"><strong>rp 150.00</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>Rp {{
+                                                    number_format(\Cart::getSubTotal()) }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>

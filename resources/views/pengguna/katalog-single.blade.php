@@ -3,7 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-0"><a href="{{ route('dashboard') }}">Home</a> <span class="mx-2 mb-0">/</span>
-                    <strong class="text-black">{{ $produk->namaproduk }}</strong></div>
+                    <strong class="text-black">{{ $produk->namaproduk }}</strong>
+                </div>
             </div>
         </div>
     </div>
@@ -41,7 +42,7 @@
         </div>
     </div>
 
-    <div class="site-section block-3 site-blocks-2 bg-light">
+    {{-- <div class="site-section block-3 site-blocks-2 bg-light">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-7 site-section-heading text-center pt-4">
@@ -115,6 +116,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 </x-pengguna-layout>
