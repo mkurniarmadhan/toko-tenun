@@ -37,14 +37,15 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Buat Akun Baru</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" action="{{ route('register') }}" method="POST">
+                                @csrf
                                 <div class="form-group ">
                                     <input type="text" class="form-control form-control-user" id="name"
-                                        placeholder="Nama Lengkap" name="name">
+                                        placeholder="Nama Lengkap" name="name" value="{{ old('name') }}">
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email"
-                                        placeholder="Email Address" name="email">
+                                        placeholder="Email Address" name="email" value="{{ old('amail') }}">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -52,12 +53,12 @@
                                             id="exampleInputPassword" placeholder="Password" name="password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="confirm_password" class="form-control form-control-user"
+                                        <input type="password" class="form-control form-control-user"
                                             id="password_confirmation" placeholder="Repeat Password"
-                                            name="confirm_password">
+                                            name="password_confirmation">
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-user btn-block">
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Daftar Akun
                                 </button>
                                 <hr>
