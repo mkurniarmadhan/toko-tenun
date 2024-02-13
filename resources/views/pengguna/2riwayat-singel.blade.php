@@ -74,7 +74,8 @@
                                 <input type="text" class="form-control" id="c_email_address" name="c_email_address">
                             </div>
                             <div class="col-md-6">
-                                <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                                <label for="c_phone" class="text-black">Phone <span
+                                        class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="c_phone" name="c_phone"
                                     placeholder="Phone Number">
                             </div>
@@ -229,7 +230,8 @@
                                         <p>Silahkan upload bukti bayar</p>
                                     </div>
                                     <div class="col-md-8 mb-3 ">
-                                        <input type="file" class="form-control" id="coupon" placeholder="Coupon Code">
+                                        <input type="file" class="form-control" id="coupon"
+                                            placeholder="Coupon Code">
                                     </div>
                                     <div class="col-md-4">
                                         <button class="btn btn-primary btn-sm">Upload Coupon</button>
