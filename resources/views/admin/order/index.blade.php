@@ -36,21 +36,21 @@
 
 
                             @forelse ($orders as $order)
-                            <tr>
-                                <td>{{ \Carbon\carbon::parse($order->created_at)->format('l m-d-Y') }}</td>
-                                <td>{{ $order->namapemesan }}</td>
-                                <td>{{ number_format($order->totalbayar) }}</td>
-                                <td>{{ $order->statusbayar ? 'Sudah Bayar' :'Belum Bayar' }}</td>
-                                <td>
-                                    <a class="btn btn-success" href="{{ route('order.show',$order) }}">
-                                        Lihat
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ \Carbon\carbon::parse($order->created_at)->format('l m-d-Y') }}</td>
+                                    <td>{{ $order->namapemesan }}</td>
+                                    <td>{{ number_format($order->totalbayar) }}</td>
+                                    <td>{{ $order->statusbayar ? 'Sudah Bayar' : 'Belum Bayar' }}</td>
+                                    <td>
+                                        <a class="btn btn-success" href="{{ route('order.show', $order) }}">
+                                            Lihat
+                                        </a>
+                                    </td>
+                                </tr>
                             @empty
-                            <tr>
-                                <td colspan="5"> Masih Kosong</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="5"> Masih Kosong</td>
+                                </tr>
                             @endforelse
 
 
@@ -67,15 +67,12 @@
 
 
     @push('script')
+        <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+        <!-- Page level plugins -->
+        <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-
-    <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-    <!-- Page level plugins -->
-    <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('admin/js/demo/datatables-demo.js') }}"></script>
-
+        <!-- Page level custom scripts -->
+        <script src="{{ asset('admin/js/demo/datatables-demo.js') }}"></script>
     @endpush
 </x-app-layout>

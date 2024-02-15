@@ -34,7 +34,7 @@
                         </div>
 
                     </div> --}}
-                    <p><a href="{{ route('cart.add',$produk) }}" class="buy-now btn btn-sm btn-primary">Tambah
+                    <p><a href="{{ route('keranjang.tambah', $produk) }}" class="buy-now btn btn-sm btn-primary">Tambah
                             keranjang</a></p>
 
                 </div>

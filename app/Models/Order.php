@@ -11,12 +11,7 @@ class Order extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $with = ['items'];
-
-    public function items()
-    {
-        return $this->hasMany(OrderItem::class);
-    }
+    protected $with = ['produks'];
     protected function buktibayar(): Attribute
     {
         return Attribute::make(
@@ -27,5 +22,11 @@ class Order extends Model
                 return false;
             },
         );
+    }
+
+    public function produks()
+    {
+        return $this->belongsToMany(Produk::class)
+            ->withPivot('jumlah');
     }
 }

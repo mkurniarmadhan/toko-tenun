@@ -4,7 +4,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-0"><a href="{{ route('dashboard') }}">Home</a> <span class="mx-2 mb-0">/</span>
-                    <strong class="text-black">Cart</strong></div>
+                    <strong class="text-black">Cart</strong>
+                </div>
             </div>
         </div>
     </div>
@@ -26,39 +27,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($carts as $cart)
-                                {{ $cart->foto }}
-                                <tr>
+                                @forelse ($items as $id=> $item)
+                                    <tr>
 
-                                    <td class="product-name">
-                                        <h2 class="h5 text-black">{{ $cart->name }}</h2>
-                                    </td>
-                                    <td>RP {{ number_format($cart->price) }}</td>
-                                    <td>
+                                        <td class="product-name">
+                                            <h2 class="h5 text-black">{{ $item['name'] }}</h2>
+                                        </td>
+                                        <td>RP {{ number_format($item['harga']) }}</td>
+                                        <td>{{ $item['jumlah'] }}</td>
+                                        {{--  <td>
 
-                                        <div rowId={{ $cart->id }} style="max-width: 120px;"
-                                            class="input-group w-auto
+                                            <div rowId={{ $cart->id }} style="max-width: 120px;"
+                                                class="input-group w-auto
                                             justify-content-end
                                             align-items-center">
-                                            <input type="button" value="-" class="btn btn-outline-primary button-minus "
-                                                data-field="quantity">
-                                            <input type="number" step="1" max="10" value="{{ $cart->quantity }}"
-                                                name="quantity"
-                                                class="form-control   quantity-field border-0 text-center w-25">
-                                            <input type="button" value="+" class="btn btn-outline-primary button-plus"
-                                                data-field="quantity">
-                                        </div>
+                                                <input type="button" value="-"
+                                                    class="btn btn-outline-primary button-minus " data-field="quantity">
+                                                <input type="number" step="1" max="10"
+                                                    value="{{ $cart->quantity }}" name="quantity"
+                                                    class="form-control   quantity-field border-0 text-center w-25">
+                                                <input type="button" value="+"
+                                                    class="btn btn-outline-primary button-plus" data-field="quantity">
+                                            </div>
 
-                                    </td>
-                                    <td>Rp {{ number_format($cart->getPriceSum()) }}</td>
-                                    <td><a href="{{ route('cart.remove', $cart->id) }}"
-                                            class="btn btn-primary btn-sm">X</a></td>
-                                </tr>
+                                        </td> --}}
+                                        <td>Rp {{ number_format($item['jumlah'] * $item['harga']) }}</td>
+                                        <td><a href="{{ route('keranjang.hapus', $id) }}"
+                                                class="btn btn-primary btn-sm">X</a></td>
+                                    </tr>
 
                                 @empty
-                                <tr>
-                                    <td>Keranjang Masih Kosong</td>
-                                </tr>
+                                    <tr>
+                                        <td>Keranjang Masih Kosong</td>
+                                    </tr>
                                 @endforelse
 
 
@@ -92,7 +93,7 @@
                                     <span class="text-black">total belanja</span>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <strong class="text-black">Rp {{ number_format(\Cart::getSubTotal()) }}</strong>
+                                    <strong class="text-black">Rp {{ number_format($totalBayar) }}</strong>
                                 </div>
                             </div>
                             <div class="row">
@@ -114,8 +115,8 @@
 
 
     @push('script')
-    <script>
-        function incrementValue(e) {
+        <script>
+            function incrementValue(e) {
                 e.preventDefault();
                 var fieldName = $(e.target).data('field');
 
@@ -128,7 +129,7 @@
                 } else {
                     parent.find('input[name=' + fieldName + ']').val(0);
                 }
-var currentVal = currentVal +1
+                var currentVal = currentVal + 1
                 sendAjax(rowId, currentVal)
 
 
@@ -148,31 +149,13 @@ var currentVal = currentVal +1
                 } else {
                     parent.find('input[name=' + fieldName + ']').val(0);
                 }
-var currentVal = currentVal -1
+                var currentVal = currentVal - 1
                 sendAjax(rowId, currentVal)
 
             }
 
 
 
-            function sendAjax(rowId, currentVal) {
-
-                $.ajax({
-                    url: '{{ route('cart.update') }}',
-                    method: "patch",
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: rowId,
-                        qty: currentVal
-                    },
-                    success: function(response) {
-                           window.location.reload();
-
-                    }
-                });
-
-
-            }
 
 
 
@@ -183,7 +166,7 @@ var currentVal = currentVal -1
                 incrementValue(e);
 
             });
-    </script>
+        </script>
     @endpush
 
 

@@ -41,7 +41,8 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <label for="phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                                <label for="phone" class="text-black">Phone <span
+                                        class="text-danger">*</span></label>
                                 <input required type="text" class="form-control" id="phone" name="phone"
                                     placeholder="Jalan Rt rw">
                             </div>
@@ -63,21 +64,21 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach (\Cart::getContent() as $item)
-                                        {{ $item}}
-                                        <tr>
-                                            <td>{{ $item->name }}<strong class="mx-2">x</strong> {{ $item->quantity }}
-                                            </td>
-                                            <td>Rp {{ number_format($item->getPriceSum()) }}</td>
-                                        </tr>
+                                        @foreach ($items as $item)
+                                            <tr>
+                                                <td>{{ $item['name'] }}<strong class="mx-2">x</strong>
+                                                    {{ $item['jumlah'] }}
+                                                </td>
+                                                <td>Rp {{ number_format($item['jumlah'] * $item['harga']) }}</td>
+                                            </tr>
                                         @endforeach
 
 
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>pesanan Total</strong>
                                             </td>
-                                            <td class="text-black font-weight-bold"><strong>Rp {{
-                                                    number_format(\Cart::getSubTotal()) }}</strong></td>
+                                            <td class="text-black font-weight-bold"><strong>Rp
+                                                    {{ number_format($totalBayar) }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>

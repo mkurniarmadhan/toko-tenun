@@ -1,7 +1,6 @@
 <x-pengguna-layout>
     <div class="site-blocks-cover"
-        style="background-image: url(https://www.dbs.com/spark/index/id_id/site/img/pillars/55/55.jpg);"
-        data-aos="fade">
+        style="background-image: url(https://www.dbs.com/spark/index/id_id/site/img/pillars/55/55.jpg);" data-aos="fade">
         <div class="container">
             <div class="row align-items-start align-items-md-center justify-content-end">
                 <div class="col-md-5 text-center text-md-left pt-5 pt-md-0" style=" background: black">
@@ -14,6 +13,8 @@
             </div>
         </div>
     </div>
+
+
     {{--
     <div class="site-section site-section-sm site-blocks-1">
         <div class="container">
@@ -68,20 +69,20 @@
 
 
                         @foreach ($produks as $produk)
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{ $produk->foto }}" alt="Image placeholder" class="img-fluid"
-                                        height="100">
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="{{ route('katalog.show',$produk) }}">{{ $produk->namaproduk }}</a>
-                                    </h3>
-                                    <p class="text-primary font-weight-bold">{{ $produk->harga }}</p>
-                                    <p class="mb-0">Stok Tersedia : {{ $produk->stok }}</p>
+                            <div class="item">
+                                <div class="block-4 text-center">
+                                    <figure class="block-4-image">
+                                        <img src="{{ $produk->foto }}" alt="Image placeholder" class="img-fluid"
+                                            height="100">
+                                    </figure>
+                                    <div class="block-4-text p-4">
+                                        <h3><a href="{{ route('katalog.show', $produk) }}">{{ $produk->namaproduk }}</a>
+                                        </h3>
+                                        <p class="text-primary font-weight-bold">{{ $produk->harga }}</p>
+                                        <p class="mb-0">Stok Tersedia : {{ $produk->stok }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
 
                         {{-- <div class="item">

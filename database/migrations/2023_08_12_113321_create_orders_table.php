@@ -23,14 +23,6 @@ return new class extends Migration
             $table->boolean('statusbayar')->default(false);
             $table->timestamps();
         });
-
-        Schema::create('order_item', function (Blueprint $table) {
-            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('produk_id')->constrained()->cascadeOnDelete();
-            $table->integer('qty');
-            $table->double('jumlah');
-            $table->timestamps();
-        });
     }
 
     /**

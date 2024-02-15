@@ -22,7 +22,6 @@
 
                                     <div class="invoice-header mb-3">
 
-                                        {{ $order }}
                                         <!-- Row start -->
                                         <form action="{{ route('updateBukti', $order) }}" class="d-block" method="post"
                                             enctype="multipart/form-data">
@@ -125,11 +124,12 @@
                                                     </thead>
                                                     <tbody>
 
-                                                        @foreach ($order->items as $item)
+                                                        @foreach ($order->produks as $item)
                                                             <tr>
-                                                                <td>{{ $item->produk->namaproduk }}</td>
-                                                                <td>{{ $item->qty }}</td>
-                                                                <td>{{ number_format($item->jumlah) }}</td>
+                                                                <td>{{ $item->namaproduk }}</td>
+                                                                <td>{{ $item->pivot->jumlah }}</td>
+                                                                <td>{{ number_format($item->pivot->jumlah * $item->harga) }}
+                                                                </td>
                                                             </tr>
                                                         @endforeach
 

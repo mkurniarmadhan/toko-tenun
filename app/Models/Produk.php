@@ -24,19 +24,9 @@ class Produk extends Model
             },
         );
     }
-    protected function harga(): Attribute
+
+    public function orders()
     {
-        return Attribute::make(
-            get: function ($x) {
-                return   number_format($x);
-            },
-        );
-    }
-
-
-    public function kategori()
-    {
-
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsToMany(Order::class)->withPivot('jumlah');
     }
 }

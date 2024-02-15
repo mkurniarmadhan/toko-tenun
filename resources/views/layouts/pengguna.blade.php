@@ -48,15 +48,13 @@
                                 <ul>
 
                                     <li>
-                                        <a href="{{ route('cart.index') }}" class="site-cart">
+                                        <a href="{{ route('keranjang') }}" class="site-cart">
                                             <span class="icon icon-shopping_cart"></span>
-                                            <span class="count">{{ \Cart::getTotalQuantity() }}</span>
+                                            <span class="count">0</span>
                                             Keranjang
                                         </a>
                                     </li>
                                     @auth
-
-                                    </li>
 
 
                                     @endauth
@@ -79,10 +77,10 @@
 
                         @auth
 
-                        <li class="{{ Route::is('riwayat') ? 'active' : '' }}">
-                            <a href="{{ route('riwayat') }}"><span class="icon icon-person"></span>Akun
-                                saya</a>
-                        </li>
+                            <li class="{{ Route::is('riwayat') ? 'active' : '' }}">
+                                <a href="{{ route('riwayat') }}"><span class="icon icon-person"></span>Akun
+                                    saya</a>
+                            </li>
 
                         @endauth
                         <li class="{{ Route::is('dashboard') ? 'active' : '' }}">
@@ -103,23 +101,23 @@
 
 
                         @guest
-                        <form action="{{ route('login') }}" method="get" class="d-inline-block">
-                            @csrf
-                            <button class="btn btn-success" type="submit" data-toggle="modal"
-                                data-target="#logoutModal">
-
-                                Login
-                            </button>
-                            @else
-                            <form action="{{ route('logout') }}" method="post" class="d-inline-block">
-
+                            <form action="{{ route('login') }}" method="get" class="d-inline-block">
                                 @csrf
-                                <button class="btn btn-danger" type="submit" data-toggle="modal"
+                                <button class="btn btn-success" type="submit" data-toggle="modal"
                                     data-target="#logoutModal">
 
-                                    Keluar
+                                    Login
                                 </button>
-                            </form>
+                            @else
+                                <form action="{{ route('logout') }}" method="post" class="d-inline-block">
+
+                                    @csrf
+                                    <button class="btn btn-danger" type="submit" data-toggle="modal"
+                                        data-target="#logoutModal">
+
+                                        Keluar
+                                    </button>
+                                </form>
 
 
                             @endguest
@@ -158,8 +156,7 @@
                         <p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
-                            <script data-cfasync="false"
-                                src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                             <script>
                                 document.write(new Date().getFullYear());
                             </script>

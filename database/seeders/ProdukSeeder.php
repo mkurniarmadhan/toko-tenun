@@ -14,7 +14,7 @@ class ProdukSeeder extends Seeder
     public function run(): void
     {
         Produk::create([
-            // 'kategori_id' => 1,
+
             'namaproduk' => 'Produk 1',
             'harga' => 10000,
             'stok' => 100,
@@ -22,7 +22,7 @@ class ProdukSeeder extends Seeder
 
         ]);
         Produk::create([
-            // 'kategori_id' => 1,
+
             'namaproduk' => 'Produk 2',
             'harga' => 10000,
             'stok' => 100,
@@ -30,7 +30,6 @@ class ProdukSeeder extends Seeder
 
         ]);
         Produk::create([
-            // 'kategori_id' => 2,
             'namaproduk' => 'Produk 3',
             'harga' => 10000,
             'stok' => 100,
