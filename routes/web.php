@@ -44,11 +44,10 @@ Route::get('tambah-keranjang/{produk}', [PenggunaController::class, 'tambah_item
 Route::get('keranjang/{id}', [PenggunaController::class, 'hapus_item_keranjang'])->name('keranjang.hapus');
 
 Route::get('tentangkami', [PenggunaController::class, 'tentangkami'])->name('tentangkami');
-Route::get('kontak', [PenggunaController::class, 'kontak'])->name('kontak');
 
 #bikin orderan baru
 Route::get('checkout', [PenggunaController::class, 'checkout'])->name('checkout')->middleware('auth');
-Route::post('checkout', [PenggunaController::class, 'checkoutStore'])->name('checkout.store')->middleware('auth');
+Route::post('checkout', [PenggunaController::class, 'simpan_data_pesanan'])->name('checkout.store')->middleware('auth');
 
 #riwayat pemesanan
 Route::get('riwayat', [PenggunaController::class, 'riwayat'])->name('riwayat')->middleware('auth');

@@ -13,7 +13,6 @@ class KeranjangController extends Controller
     public function showCart()
     {
         $carts = collect(request()->session()->get('cart'));
-
         $cart_total = 0;
         if (session('cart')) {
             foreach ($carts as $key => $product) {
@@ -21,20 +20,12 @@ class KeranjangController extends Controller
             }
         }
 
-        // dd($carts);
         return view('pengguna.keranjang', compact('carts', 'cart_total'));
-
-        // // /*dd($cart_total);*/
-        // $products = Produk::has('images')->with('images')->latest()->limit(10)->get();
-        // $total_products_count = request()->session()->get('cart') ? count(request()->session()->get('cart')) : 0;
-        // return view('frontend.cart.cart', compact('products', 'cart_products', 'cart_total', 'total_products_count'));
     }
 
 
     public function tambahItem(Produk $produk, Request $request)
     {
-
-
 
         if (isset($cart[$produk->id])) {
             $cart[$produk->id]['jumlah']++;
@@ -49,18 +40,7 @@ class KeranjangController extends Controller
         $request->session()->put('cart', $cart);
 
 
-        return back();
-        // $cart_products = collect(request()->session()->get('cart'));
-        // $cart_total = 0;
-
-        // foreach ($cart_products as $key => $product) {
-
-        //     $cart_total += $product['quantity'] * $product['discount_price'];
-        // }
-
-        // $renderHTML = view('frontend.cart.mini-cart-render', compact('cart_products', 'cart_total'))->render();
-        // $total_products_count = count(request()->session()->get('cart'));
-        // return response()->json(['renderHTML' => $renderHTML, 'total_products_count' => $total_products_count], 200);
+        return back()->with('succes', '<span class="badge badge-pill badge-primary">Primary</span>');
     }
 
     public function update(Request $request)

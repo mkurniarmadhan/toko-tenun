@@ -70,7 +70,7 @@ class PenggunaController extends Controller
         request()->session()->put('cart', $cart);
 
 
-        return back();
+        return back()->with('status', 'Produk Berhasil di tambahkan');
     }
 
     public function hapus_item_keranjang($id)
@@ -84,7 +84,7 @@ class PenggunaController extends Controller
         request()->session()->put('cart', $cart);
 
 
-        return back();
+        return back()->with('status', 'Produk Berhasil di Dihapus');
     }
 
     public function checkout()
@@ -101,7 +101,7 @@ class PenggunaController extends Controller
 
         return view('pengguna.checkout', compact('items', 'totalBayar'));
     }
-    public function checkoutStore(Request $request)
+    public function simpan_data_pesanan(Request $request)
     {
         $carts =  collect(request()->session()->get('cart'));
 
@@ -131,13 +131,16 @@ class PenggunaController extends Controller
                     'jumlah' => $produk['jumlah']
                 ]
             );
+
+            DB::table('produks')
+                ->where('id', $id)
+                ->decrement('stok', $produk['jumlah']);
         });
 
 
-
-
         $request->session()->put('cart', []);
-        return to_route('riwayat');
+
+        return to_route("riwayatshow", $order->id);
     }
     public function success()
     {
@@ -171,10 +174,6 @@ class PenggunaController extends Controller
             $request['buktibayar'] = $imageName;
         }
 
-
-
-
-
         $order->update(['buktibayar' => $request->buktibayar]);
         return back();
     }
@@ -183,11 +182,5 @@ class PenggunaController extends Controller
     {
 
         return view('pengguna.tentangkami');
-    }
-
-    public function kontak()
-    {
-
-        return view('pengguna.kontak');
     }
 }

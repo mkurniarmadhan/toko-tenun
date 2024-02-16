@@ -155,9 +155,7 @@
                                     </div>
                                     <!-- Row end -->
                                 </div>
-                                <div class="invoice-footer">
-                                    Thank you for your Business.
-                                </div>
+
                             </div>
                         </div>
                     </div>

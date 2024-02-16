@@ -41,7 +41,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
                                     </div>
-                                    <form class="user" action="{{ route('login')}}" method="post">
+                                    <form class="user" action="{{ route('login') }}" method="post">
                                         @csrf
                                         <div class="form-group">
                                             <input type="email"
@@ -49,18 +49,14 @@
                                                 id="email" aria-describedby="email" value="{{ old('email') }}"
                                                 placeholder="Enter Email Address..." name="email">
                                             @error('email')
-
-                                            <span class="text-danger">{{ $message }}</span>
-
+                                                <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password" name="password">
                                             @error('password')
-
-                                            <span class="text-danger">{{ $message }}</span>
-
+                                                <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
